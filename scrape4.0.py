@@ -104,8 +104,8 @@ def fetch_and_format_profile_data(names_file, output_file, error_log_file):
     all_profile_data.sort(key=lambda x: (x['level'], x['name'].lower()), reverse=True)
 
     with open(output_file, 'w') as output_file_handle:
-        output_file_handle.write("This table presents current rankings for all characters who have completed all 53 [[:Category:Maps|maps]], sorted by levels. See documentation [https://github.com/styrserver/BestiaryArenaRankings here].\n")
-        output_file_handle.write("{| class=\"sortable fandom-table\"\n")
+        output_file_handle.write(f"This table presents current rankings for {len(all_profile_data)} characters who have completed all 53 [[:Category:Maps|maps]], sorted by levels.\n")
+        output_file_handle.write("{| class=\"wikitable sortable\"\n")
         output_file_handle.write("!'''Username'''\n")
         output_file_handle.write("!'''Level'''\n")
         output_file_handle.write("!<abbr title=\"Successful runs\">[[File:Match-count.png|frameless]]</abbr>\n")
@@ -135,7 +135,7 @@ def fetch_and_format_profile_data(names_file, output_file, error_log_file):
         current_utc_time_str = current_utc_time.strftime("%Y-%m-%d %H:%M:%S UTC%z").replace("UTC+0000", "UTC+0")
 
         output_file_handle.write(f"|}}\n")
-        output_file_handle.write(f"''<small>Updated ({current_utc_time_str}).</small>''\n")
+        output_file_handle.write(f"''<small>Updated ({current_utc_time_str}). See documentation [https://github.com/styrserver/Bestiary-Arena-Rankings here].</small>''\n")
         output_file_handle.write("[[Category:Highscores]]\n")
 
     print(f"\nData has been written to {output_file}")
